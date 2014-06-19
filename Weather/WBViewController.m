@@ -10,10 +10,13 @@
 #import "ForecastKit.h"
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-
-@interface WBViewController ()
-
+@interface WBViewController () <CLLocationManagerDelegate>
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *latitude;
+@property (nonatomic, strong) NSString *longitue;
 @end
 
 @implementation WBViewController
@@ -26,7 +29,41 @@
     self.feelsLikeLabel.alpha = 0.0f;
     self.summaryLabel.alpha = 0.0f;
     self.viewMainView.alpha = 0.0f;
+    NSLog(@"viewDidLoad!");
+    [self loadLocation];
  }
+
+-(void)loadLocation {
+    if ([CLLocationManager locationServicesEnabled]) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = 1000;
+        [self.locationManager startUpdatingLocation];
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [self.locationManager stopUpdatingLocation];
+    
+    CLLocation *location = [locations firstObject];
+    
+    //CLLocationCoordinate2D coord;
+    //coord.longitude = location.coordinate.longitude;
+    //coord.latitude = location.coordinate.latitude;
+    
+    self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark = [placemarks firstObject];
+        self.location = placemark.name;
+    }];
+    
+    NSLog( @"didUpdateLocation!");
+    NSLog( @"We're in: %@", self.location);
+    //NSLog( @"latitude is %f and longitude is %f", coord.latitude, coord.longitude);
+}
 
 -(void) viewWillAppear:(BOOL)animated {
     self.tempLabel.alpha = 0.0f;
@@ -57,7 +94,9 @@
     self.summaryLabel.alpha = 0.0f;
     self.viewMainView.alpha = 0.0f;
     
-    [forecast getCurrentConditionsForLatitude:-27.9253 longitude:30.4239 success:^(NSMutableDictionary *responseDict) {
+    //getCurrentConditionsForLatitude:-27.9253 longitude:30.4239
+    
+    [forecast getCurrentConditionsForLatitude:[self.latitude doubleValue] longitude:[self.longitue doubleValue] success:^(NSMutableDictionary *responseDict) {
         
         NSLog(@"%@", responseDict);
         
@@ -84,6 +123,7 @@
         windSpeed = [forecast kilometersValue:windSpeed];
         
         //Set label text
+        self.locationLabel.text = self.location;
         self.tempLabel.text = [forecast iconCharacter:icon];
         self.summaryLabel.text = summary;
         self.currentTempLabel.text = [NSString stringWithFormat:@"%@%@", [forecast roundNumberUp:temp], @"\u00B0"];

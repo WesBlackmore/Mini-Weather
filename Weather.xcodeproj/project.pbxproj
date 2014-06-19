@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4AD4F8AED3924E8AB08E4C97 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6116C5804945F3B69F9DFC /* libPods.a */; };
+		B670BAEC1952EAA3001BF805 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B670BAEB1952EAA3001BF805 /* CoreLocation.framework */; };
 		B6BCB98419472F1200C193E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BCB98319472F1200C193E9 /* Foundation.framework */; };
 		B6BCB98619472F1200C193E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BCB98519472F1200C193E9 /* CoreGraphics.framework */; };
 		B6BCB98819472F1200C193E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BCB98719472F1200C193E9 /* UIKit.framework */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		6C6116C5804945F3B69F9DFC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B670BAEB1952EAA3001BF805 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B6BCB98019472F1200C193E9 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BCB98319472F1200C193E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6BCB98519472F1200C193E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B670BAEC1952EAA3001BF805 /* CoreLocation.framework in Frameworks */,
 				B6BCB9C219485C7C00C193E9 /* QuartzCore.framework in Frameworks */,
 				B6BCB98619472F1200C193E9 /* CoreGraphics.framework in Frameworks */,
 				B6BCB98819472F1200C193E9 /* UIKit.framework in Frameworks */,
@@ -138,6 +141,7 @@
 		B6BCB98219472F1200C193E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B670BAEB1952EAA3001BF805 /* CoreLocation.framework */,
 				B6BCB9C119485C7C00C193E9 /* QuartzCore.framework */,
 				B6BCB98319472F1200C193E9 /* Foundation.framework */,
 				B6BCB98519472F1200C193E9 /* CoreGraphics.framework */,
