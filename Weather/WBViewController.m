@@ -16,7 +16,7 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *latitude;
-@property (nonatomic, strong) NSString *longitue;
+@property (nonatomic, strong) NSString *longitude;
 @end
 
 @implementation WBViewController
@@ -47,21 +47,26 @@
     
     CLLocation *location = [locations firstObject];
     
-    //CLLocationCoordinate2D coord;
-    //coord.longitude = location.coordinate.longitude;
-    //coord.latitude = location.coordinate.latitude;
-    
     self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
-    self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSLog( @"latitude is %@ and longitude is %@", self.latitude, self.longitude);
     
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        CLPlacemark *placemark = [placemarks firstObject];
-        self.location = placemark.name;
+        if(!error) {
+            self.location = ([placemarks count] > 0) ? [[placemarks objectAtIndex:0] name] : @"Not Found";
+            NSLog( @"We're in: %@", self.location);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.locationLabel.text = self.location;
+            });
+        }
+        else{
+            NSLog(@"Failed getting city: %@", [error description]);
+        }
     }];
     
     NSLog( @"didUpdateLocation!");
-    NSLog( @"We're in: %@", self.location);
+    
     //NSLog( @"latitude is %f and longitude is %f", coord.latitude, coord.longitude);
 }
 
@@ -70,6 +75,7 @@
     self.feelsLikeLabel.alpha = 0.0f;
     self.summaryLabel.alpha = 0.0f;
     self.viewMainView.alpha = 0.0f;
+    self.locationLabel.text = self.location;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -78,7 +84,8 @@
     /*
     TO DO:
      1. Caching
-     2. Location
+     2. Location - DONE
+     2.5 Date and Time
      3. Week Data
      4. Animation
      5. Fix Layout
@@ -96,7 +103,7 @@
     
     //getCurrentConditionsForLatitude:-27.9253 longitude:30.4239
     
-    [forecast getCurrentConditionsForLatitude:[self.latitude doubleValue] longitude:[self.longitue doubleValue] success:^(NSMutableDictionary *responseDict) {
+    [forecast getCurrentConditionsForLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue] success:^(NSMutableDictionary *responseDict) {
         
         NSLog(@"%@", responseDict);
         
@@ -123,7 +130,7 @@
         windSpeed = [forecast kilometersValue:windSpeed];
         
         //Set label text
-        self.locationLabel.text = self.location;
+        //self.locationLabel.text = self.location;
         self.tempLabel.text = [forecast iconCharacter:icon];
         self.summaryLabel.text = summary;
         self.currentTempLabel.text = [NSString stringWithFormat:@"%@%@", [forecast roundNumberUp:temp], @"\u00B0"];
