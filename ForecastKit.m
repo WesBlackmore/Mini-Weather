@@ -40,7 +40,6 @@
 
 -(NSString *)celciusValue:(NSString *)fahrenheit {
     NSInteger celcius = (fahrenheit.intValue-32)*(0.5556);
-    NSLog(@"Fahrenheit: %@ Celcius: %ld", fahrenheit, (long)celcius);
     return [NSString stringWithFormat: @"%ld", (long)celcius];
 }
 
@@ -193,11 +192,9 @@
                              longitude:(double)lon
                                success:(void (^)(NSMutableDictionary *responseDict))success
                                failure:(void (^)(NSError *error))failure {
-    NSLog(@"lat: %.6f Long: %.6f", lat, lon);
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f", self.apiKey, lat, lon]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSString *path = [[NSString alloc] initWithString:[url path]];
-    NSLog(@"URL: %@", path);
     //NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:2 * 1024 * 1024
                                                             //diskCapacity:100 * 1024 * 1024
                                                                 //diskPath:nil];

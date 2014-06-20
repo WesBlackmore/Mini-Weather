@@ -29,9 +29,29 @@
     self.feelsLikeLabel.alpha = 0.0f;
     self.summaryLabel.alpha = 0.0f;
     self.viewMainView.alpha = 0.0f;
-    NSLog(@"viewDidLoad!");
+
     [self loadLocation];
  }
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    self.tempLabel.alpha = 0.0f;
+    self.feelsLikeLabel.alpha = 0.0f;
+    self.summaryLabel.alpha = 0.0f;
+    self.viewMainView.alpha = 0.0f;
+    self.locationLabel.text = self.location;
+}
+
+#pragma mark Set Location
 
 -(void)loadLocation {
     if ([CLLocationManager locationServicesEnabled]) {
@@ -49,7 +69,6 @@
     
     self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
-    NSLog( @"latitude is %@ and longitude is %@", self.latitude, self.longitude);
     
     [self updateUI];
     
@@ -57,8 +76,6 @@
     [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if(!error) {
             self.location = ([placemarks count] > 0) ? [[placemarks objectAtIndex:0] name] : @"Not Found";
-            
-            NSLog( @"We're in: %@", self.location);
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.locationLabel.text = self.location;
             });
@@ -67,20 +84,9 @@
             NSLog(@"Failed getting city: %@", [error description]);
         }
     }];
-    
-    NSLog( @"didUpdateLocation!");
-    
-    //NSLog( @"latitude is %f and longitude is %f", coord.latitude, coord.longitude);
 }
 
--(void) viewWillAppear:(BOOL)animated {
-    self.tempLabel.alpha = 0.0f;
-    self.feelsLikeLabel.alpha = 0.0f;
-    self.summaryLabel.alpha = 0.0f;
-    self.viewMainView.alpha = 0.0f;
-    self.locationLabel.text = self.location;
-}
-
+#pragma mark Update UI Elements
 - (void)updateUI {
     /*
      TO DO:
@@ -104,7 +110,7 @@
     self.viewMainView.alpha = 0.0f;
     
     //getCurrentConditionsForLatitude:-27.9253 longitude:30.4239
-    NSLog(@"ViewDidAppear - lat: %@ lon: %@", self.latitude, self.longitude);
+
     [forecast getCurrentConditionsForLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue] success:^(NSMutableDictionary *responseDict) {
         
         NSLog(@"%@", responseDict);
@@ -179,16 +185,4 @@
     }];
 
 }
-
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 @end
