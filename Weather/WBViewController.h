@@ -13,6 +13,7 @@
 @interface WBViewController : UIViewController
 
 
+@property (weak, nonatomic) IBOutlet UILabel *currentDateTime;
 
 @property (weak, nonatomic) IBOutlet UILabel *tempLabel;
 @property (retain, nonatomic) IBOutlet UIView *viewMainView;

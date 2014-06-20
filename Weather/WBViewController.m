@@ -85,12 +85,13 @@
     /*
      TO DO:
      1. Caching
-     2. Location - DONE
+        2. Location - DONE
      2.5 Date and Time
      3. Week Data
      4. Animation
      5. Fix Layout
      6. Add F/C M/KM check
+     7. Remove NSLogs
      */
     
     ForecastKit *forecast = [[ForecastKit alloc] initWithAPIKey:@"4f3b47f06c6a8e18ea2a07fa0c290d6c"];
@@ -114,6 +115,14 @@
         NSString *icon = [responseDict objectForKey:@"icon"];
         NSString *windBearing = [responseDict objectForKey:@"windBearing"];
         NSString *windSpeed = [responseDict objectForKey:@"windSpeed"];
+        
+        
+        NSDateFormatter* day = [[NSDateFormatter alloc] init];
+        [day setDateFormat: @"EEEE ha"];
+        [day setAMSymbol:@"am"];
+        [day setPMSymbol:@"pm"];
+        NSLog(@"the day is: %@", [day stringFromDate:[NSDate date]]);
+        
         //NSDecimalNumber *precipIntensity = @([@"42.42" floatValue]); //[responseDict objectForKey:@"precipIntensity"];
         //NSDecimalNumber *precipIntensity = [[NSDecimalNumber decimalNumberWithString:@"0.42"] decimalNumberByMultiplyingByPowerOf10:2];
         NSDecimalNumber *precipIntensity = [[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%@", [responseDict objectForKey:@"precipIntensity"]]] decimalNumberByMultiplyingByPowerOf10:2];
@@ -132,6 +141,7 @@
         
         //Set label text
         //self.locationLabel.text = self.location;
+        self.currentDateTime.text = [NSString stringWithFormat:@"%@", [day stringFromDate:[NSDate date]]];
         self.tempLabel.text = [forecast iconCharacter:icon];
         self.summaryLabel.text = summary;
         self.currentTempLabel.text = [NSString stringWithFormat:@"%@%@", [forecast roundNumberUp:temp], @"\u00B0"];

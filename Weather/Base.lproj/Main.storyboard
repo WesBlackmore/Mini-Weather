@@ -112,6 +112,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pj8-kH-54K"/>
                     <connections>
+                        <outlet property="currentDateTime" destination="3W2-ny-HDw" id="qGE-E5-hwn"/>
                         <outlet property="currentTempIcon" destination="tS1-kw-S1I" id="fyZ-gb-r3T"/>
                         <outlet property="currentTempLabel" destination="zLF-xu-ZfU" id="bRI-xK-hXJ"/>
                         <outlet property="feelsLikeLabel" destination="T0A-Hl-ffq" id="Xvo-HT-CJO"/>

@@ -179,7 +179,7 @@
         if (temp.intValue > 25) {
             return [UIColor colorWithRed:0.91 green:0.298 blue:0.239 alpha:1]; // Orange/Red #e84c3d
         }
-        else if(([icon rangeOfString:@"cloud"].location != NSNotFound) || [icon isEqualToString:@"hail"] || [icon isEqualToString:@"fog"] || [icon isEqualToString:@"rain"] || [icon isEqualToString:@"snow"] || [icon isEqualToString:@"thunderstorm"]) {
+        else if(([icon rangeOfString:@"cloud"].location != NSNotFound) || ([icon rangeOfString:@"hail"].location != NSNotFound) || ([icon rangeOfString:@"fog"].location != NSNotFound) || ([icon rangeOfString:@"rain"].location != NSNotFound) || ([icon rangeOfString:@"snow"].location != NSNotFound) || [icon isEqualToString:@"thunder"] || [icon isEqualToString:@"mist"]) {
             return [UIColor colorWithRed:0.584 green:0.647 blue:0.647 alpha:1]; // Grey #95a5a5
         }
         else {
