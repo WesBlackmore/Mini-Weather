@@ -51,10 +51,13 @@
     self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
     NSLog( @"latitude is %@ and longitude is %@", self.latitude, self.longitude);
     
+    [self updateUI];
+    
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if(!error) {
             self.location = ([placemarks count] > 0) ? [[placemarks objectAtIndex:0] name] : @"Not Found";
+            
             NSLog( @"We're in: %@", self.location);
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.locationLabel.text = self.location;
@@ -78,11 +81,9 @@
     self.locationLabel.text = self.location;
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
+- (void)updateUI {
     /*
-    TO DO:
+     TO DO:
      1. Caching
      2. Location - DONE
      2.5 Date and Time
@@ -90,9 +91,9 @@
      4. Animation
      5. Fix Layout
      6. Add F/C M/KM check
-    */
+     */
     
-	ForecastKit *forecast = [[ForecastKit alloc] initWithAPIKey:@"4f3b47f06c6a8e18ea2a07fa0c290d6c"];
+    ForecastKit *forecast = [[ForecastKit alloc] initWithAPIKey:@"4f3b47f06c6a8e18ea2a07fa0c290d6c"];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setMaximumFractionDigits:0];
     
@@ -102,7 +103,7 @@
     self.viewMainView.alpha = 0.0f;
     
     //getCurrentConditionsForLatitude:-27.9253 longitude:30.4239
-    
+    NSLog(@"ViewDidAppear - lat: %@ lon: %@", self.latitude, self.longitude);
     [forecast getCurrentConditionsForLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue] success:^(NSMutableDictionary *responseDict) {
         
         NSLog(@"%@", responseDict);
@@ -148,7 +149,7 @@
         
         self.currentTempIcon.font = [UIFont fontWithName:@"Climacons-Font" size:30];
         self.currentTempIcon.text = [forecast iconCharacter:[forecast selectIconByTemperature:temp]];
-       
+        
         
         self.rainIntensityIcon.font = [UIFont fontWithName:@"Climacons-Font" size:30];
         self.rainIntensityIcon.text = [forecast iconCharacter:@"umbrella"];
@@ -166,6 +167,11 @@
         self.summaryLabel.alpha = 1.0f;
         self.viewMainView.alpha = 1.0f;
     }];
+
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

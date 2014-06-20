@@ -40,12 +40,13 @@
 
 -(NSString *)celciusValue:(NSString *)fahrenheit {
     NSInteger celcius = (fahrenheit.intValue-32)*(0.5556);
-    return [NSString stringWithFormat: @"%d", celcius];
+    NSLog(@"Fahrenheit: %@ Celcius: %ld", fahrenheit, (long)celcius);
+    return [NSString stringWithFormat: @"%ld", (long)celcius];
 }
 
 -(NSString *)kilometersValue:(NSString *)miles {
     NSInteger kilometers = (miles.intValue)*(0.62137);
-    return [NSString stringWithFormat: @"%d", kilometers];
+    return [NSString stringWithFormat: @"%ld", (long)kilometers];
 }
 
 -(NSString *)iconCharacter:(NSString *)icon  {
@@ -87,22 +88,22 @@
         return @"B"; //Strong winds
     }
     else if([icon isEqualToString:@"compass"]) {
-        return @"a"; //Strong winds
+        return @"a"; //Compass
     }
     else if([icon isEqualToString:@"compassN"]) {
-        return @"b"; //Strong winds
+        return @"b"; //Compass N
     }
     else if([icon isEqualToString:@"compassS"]) {
-        return @"d"; //Strong winds
+        return @"d"; //Compass S
     }
     else if([icon isEqualToString:@"compassE"]) {
-        return @"c"; //Strong winds
+        return @"c"; //Compass E
     }
     else if([icon isEqualToString:@"compassW"]) {
-        return @"e"; //Strong winds
+        return @"e"; //Compass W
     }
     else if([icon isEqualToString:@"tempLow1"]) {
-        return @"Y"; //Strong winds
+        return @"Y"; //Temp Low 1
     }
     else if([icon isEqualToString:@"tempLow2"]) {
         return @"Z"; //Strong winds
@@ -178,7 +179,7 @@
         if (temp.intValue > 25) {
             return [UIColor colorWithRed:0.91 green:0.298 blue:0.239 alpha:1]; // Orange/Red #e84c3d
         }
-        else if([icon isEqualToString:@"cloudy"] || [icon isEqualToString:@"hail"] || [icon isEqualToString:@"fog"] || [icon isEqualToString:@"rain"] || [icon isEqualToString:@"snow"] || [icon isEqualToString:@"thunderstorm"]) {
+        else if(([icon rangeOfString:@"cloud"].location != NSNotFound) || [icon isEqualToString:@"hail"] || [icon isEqualToString:@"fog"] || [icon isEqualToString:@"rain"] || [icon isEqualToString:@"snow"] || [icon isEqualToString:@"thunderstorm"]) {
             return [UIColor colorWithRed:0.584 green:0.647 blue:0.647 alpha:1]; // Grey #95a5a5
         }
         else {
@@ -192,9 +193,11 @@
                              longitude:(double)lon
                                success:(void (^)(NSMutableDictionary *responseDict))success
                                failure:(void (^)(NSError *error))failure {
-    
+    NSLog(@"lat: %.6f Long: %.6f", lat, lon);
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f", self.apiKey, lat, lon]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSString *path = [[NSString alloc] initWithString:[url path]];
+    NSLog(@"URL: %@", path);
     //NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:2 * 1024 * 1024
                                                             //diskCapacity:100 * 1024 * 1024
                                                                 //diskPath:nil];
