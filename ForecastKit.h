@@ -29,7 +29,7 @@
                               icon:(NSString *)icon
                            isNight:(BOOL)isNight;
 
-// Current Conditions 
+// Current Conditions
 
 /**
  * Request the current conditions for the give location for the next week.

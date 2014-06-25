@@ -192,12 +192,12 @@
                              longitude:(double)lon
                                success:(void (^)(NSMutableDictionary *responseDict))success
                                failure:(void (^)(NSError *error))failure {
+    NSLog(@"lat %f, lon %f", lat, lon);
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f", self.apiKey, lat, lon]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSString *path = [[NSString alloc] initWithString:[url path]];
     //NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:2 * 1024 * 1024
-                                                            //diskCapacity:100 * 1024 * 1024
-                                                                //diskPath:nil];
+    //diskCapacity:100 * 1024 * 1024
+    //diskPath:nil];
     //[NSURLCache setSharedURLCache:sharedCache];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];

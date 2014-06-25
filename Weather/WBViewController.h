@@ -28,5 +28,35 @@
 @property (weak, nonatomic) IBOutlet UILabel *rainIntensityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rainIntensityIcon;
 
+#pragma mark Week Weather Conditions
+//Day 1
+@property (weak, nonatomic) IBOutlet UILabel *day1Text;
+@property (weak, nonatomic) IBOutlet UILabel *day1Icon;
+@property (weak, nonatomic) IBOutlet UILabel *day1Temp;
+@property (weak, nonatomic) IBOutlet UILabel *day1TempMin;
+
+//Day 2
+@property (weak, nonatomic) IBOutlet UILabel *day2Text;
+@property (weak, nonatomic) IBOutlet UILabel *day2Icon;
+@property (weak, nonatomic) IBOutlet UILabel *day2Temp;
+@property (weak, nonatomic) IBOutlet UILabel *day2TempMin;
+
+//Day 3
+@property (weak, nonatomic) IBOutlet UILabel *day3Text;
+@property (weak, nonatomic) IBOutlet UILabel *day3Icon;
+@property (weak, nonatomic) IBOutlet UILabel *day3Temp;
+@property (weak, nonatomic) IBOutlet UILabel *day3TempMin;
+
+//Day 4
+@property (weak, nonatomic) IBOutlet UILabel *day4Text;
+@property (weak, nonatomic) IBOutlet UILabel *day4Icon;
+@property (weak, nonatomic) IBOutlet UILabel *day4Temp;
+@property (weak, nonatomic) IBOutlet UILabel *day4TempMin;
+
+//Day 5
+@property (weak, nonatomic) IBOutlet UILabel *day5Text;
+@property (weak, nonatomic) IBOutlet UILabel *day5Icon;
+@property (weak, nonatomic) IBOutlet UILabel *day5Temp;
+@property (weak, nonatomic) IBOutlet UILabel *day5TempMin;
 
 @end
