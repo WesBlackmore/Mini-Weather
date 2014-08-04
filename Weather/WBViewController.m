@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *latitude;
 @property (nonatomic, strong) NSString *longitude;
-@property (nonatomic, strong) NSMutableArray *currentlyArray;
+@property (nonatomic, strong) NSMutableArray *hourlyArray;
 @property (nonatomic, strong) NSMutableArray *dailyArray;
 
 @end
@@ -100,9 +100,9 @@
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        _currentlyArray = [responseObject objectForKey:@"daily"];
+        _hourlyArray = [responseObject objectForKey:@"hourly"];
         _dailyArray = [responseObject objectForKey:@"daily"];
-        NSLog(@"Daily: %@", [[_dailyArray valueForKeyPath:@"data"] objectAtIndex:0]);
+        NSLog(@"Hourly: %@", [[_dailyArray valueForKeyPath:@"data"] objectAtIndex:0]);
         //self.day1Text.text = ; //dateformatter for day
         self.day1Icon.font = [UIFont fontWithName:@"Climacons-Font" size:35];
         self.day2Icon.font = [UIFont fontWithName:@"Climacons-Font" size:35];

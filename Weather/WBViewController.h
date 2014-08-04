@@ -28,6 +28,32 @@
 @property (weak, nonatomic) IBOutlet UILabel *rainIntensityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rainIntensityIcon;
 
+#pragma mark Hourly Weather Conditions
+//Now
+@property (weak, nonatomic) IBOutlet UILabel *nowText;
+@property (weak, nonatomic) IBOutlet UILabel *nowIcon;
+@property (weak, nonatomic) IBOutlet UILabel *nowTemp;
+
+//Hour 1
+@property (weak, nonatomic) IBOutlet UILabel *hour1Text;
+@property (weak, nonatomic) IBOutlet UILabel *hour1Icon;
+@property (weak, nonatomic) IBOutlet UILabel *hour1Temp;
+
+//Hour 2
+@property (weak, nonatomic) IBOutlet UILabel *hour2Text;
+@property (weak, nonatomic) IBOutlet UILabel *hour2Icon;
+@property (weak, nonatomic) IBOutlet UILabel *hour2Temp;
+
+//Hour 3
+@property (weak, nonatomic) IBOutlet UILabel *hour3Text;
+@property (weak, nonatomic) IBOutlet UILabel *hour3Icon;
+@property (weak, nonatomic) IBOutlet UILabel *hour3Temp;
+
+//Hour 4
+@property (weak, nonatomic) IBOutlet UILabel *hour4Text;
+@property (weak, nonatomic) IBOutlet UILabel *hour4Icon;
+@property (weak, nonatomic) IBOutlet UILabel *hour4Temp;
+
 #pragma mark Week Weather Conditions
 //Day 1
 @property (weak, nonatomic) IBOutlet UILabel *day1Text;
