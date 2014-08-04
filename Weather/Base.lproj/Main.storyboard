@@ -435,6 +435,21 @@
                         <outletCollection property="dayLabelArray" destination="Wfk-q6-aH5" id="p1h-gN-1jJ"/>
                         <outletCollection property="dayLabelArray" destination="zwG-Ve-QEo" id="Sak-3A-LfN"/>
                         <outletCollection property="dayLabelArray" destination="O1S-eb-UzG" id="hIa-Ht-VrY"/>
+                        <outletCollection property="dayTempArray" destination="9jd-Hr-UQc" id="vGc-Cd-M1R"/>
+                        <outletCollection property="dayTempArray" destination="N5n-Av-IFj" id="6fO-NJ-ZVf"/>
+                        <outletCollection property="dayTempArray" destination="4Wc-t5-afg" id="AIE-XN-9x4"/>
+                        <outletCollection property="dayTempArray" destination="jLe-NZ-rCE" id="wV7-GR-2ky"/>
+                        <outletCollection property="dayTempArray" destination="KXu-K3-RfA" id="fYa-Dg-AZa"/>
+                        <outletCollection property="dayTempMinArray" destination="ib8-Ev-YBq" id="8Qn-lK-3Lx"/>
+                        <outletCollection property="dayTempMinArray" destination="j1d-3C-2qU" id="Zhp-f8-SSR"/>
+                        <outletCollection property="dayTempMinArray" destination="A33-bO-0pX" id="Lew-49-lFV"/>
+                        <outletCollection property="dayTempMinArray" destination="DaX-2E-0mf" id="CYM-L9-snz"/>
+                        <outletCollection property="dayTempMinArray" destination="xRi-sf-msI" id="HXi-Ie-EUB"/>
+                        <outletCollection property="dayIconArray" destination="Ohy-Ch-TLr" id="rZE-fO-RXj"/>
+                        <outletCollection property="dayIconArray" destination="fif-6f-p0t" id="gXR-Uq-ctc"/>
+                        <outletCollection property="dayIconArray" destination="agr-kX-E5v" id="1CG-WC-h15"/>
+                        <outletCollection property="dayIconArray" destination="YcZ-fx-RTX" id="yuz-Kt-NRx"/>
+                        <outletCollection property="dayIconArray" destination="TTF-P9-gGU" id="j38-Ms-7uc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

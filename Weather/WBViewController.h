@@ -16,6 +16,12 @@
 
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *dayLabelArray;
 
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *dayIconArray;
+
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *dayTempArray;
+
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *dayTempMinArray;
+
 @property (weak, nonatomic) IBOutlet UILabel *currentDateTime;
 
 @property (weak, nonatomic) IBOutlet UILabel *tempLabel;

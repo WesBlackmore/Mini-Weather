@@ -111,16 +111,9 @@
         _dailyArray = [responseObject objectForKey:@"daily"];
         NSLog(@"Hourly: %@", [[_dailyArray valueForKeyPath:@"data"] objectAtIndex:0]);
         
-        //Update UI Hourly
+        //Update UI Hourly TODO
         
-        //TO DO: Refactor
-        self.day1Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:0]];
-        self.day2Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:1]];
-        self.day3Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:2]];
-        self.day4Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:3]];
-        self.day5Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:4]];
-        
-        
+        //Update UI Daily
         NSDateFormatter* day = [[NSDateFormatter alloc] init];
         [day setDateFormat: @"EEE"];
         
@@ -129,20 +122,21 @@
             label.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:i++] doubleValue]]];
         }
         
-        //TO DO: Refactor
-        self.day1Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:0]];
-        self.day2Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:1]];
-        self.day3Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:2]];
-        self.day4Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:3]];
-        self.day5Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:4]];
+        i = 0;
+        for (UILabel *label in self.dayIconArray) {
+            label.text =[forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:i++]];
+        }
         
-        //TO DO: Refactor
-        self.day1TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:0]];
-        self.day2TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:1]];
-        self.day3TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:2]];
-        self.day4TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:3]];
-        self.day5TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:4]];
+        i = 0;
+        for (UILabel *label in self.dayTempArray) {
+            label.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:i++]];
+        }
         
+        i = 0;
+        for (UILabel *label in self.dayTempMinArray) {
+            label.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:i++]];
+        }
+       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@",  operation.responseString);
     }];
