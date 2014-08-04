@@ -74,7 +74,8 @@
     self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
     
-    [self returnWeatherDisctionaries];
+    [self setIconLabelFonts];
+    [self returnWeatherDictionaries];
     [self updateUI];
     
     
@@ -92,7 +93,13 @@
     }];
 }
 
--(void)returnWeatherDisctionaries {
+-(void)setIconLabelFonts {
+    for (UILabel *label in self.fontLabelArray) {
+        label.font = [UIFont fontWithName:@"Climacons-Font" size:35];
+    }
+}
+
+-(void)returnWeatherDictionaries {
     ForecastKit *forecast = [[ForecastKit alloc] initWithAPIKey:@"4f3b47f06c6a8e18ea2a07fa0c290d6c"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f", @"4f3b47f06c6a8e18ea2a07fa0c290d6c", [self.latitude doubleValue], [self.longitude doubleValue]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -103,13 +110,10 @@
         _hourlyArray = [responseObject objectForKey:@"hourly"];
         _dailyArray = [responseObject objectForKey:@"daily"];
         NSLog(@"Hourly: %@", [[_dailyArray valueForKeyPath:@"data"] objectAtIndex:0]);
-        //self.day1Text.text = ; //dateformatter for day
-        self.day1Icon.font = [UIFont fontWithName:@"Climacons-Font" size:35];
-        self.day2Icon.font = [UIFont fontWithName:@"Climacons-Font" size:35];
-        self.day3Icon.font = [UIFont fontWithName:@"Climacons-Font" size:35];
-        self.day4Icon.font = [UIFont fontWithName:@"Climacons-Font" size:35];
-        self.day5Icon.font = [UIFont fontWithName:@"Climacons-Font" size:35];
         
+        //Update UI Hourly
+        
+        //TO DO: Refactor
         self.day1Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:0]];
         self.day2Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:1]];
         self.day3Icon.text = [forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:2]];
@@ -119,19 +123,20 @@
         
         NSDateFormatter* day = [[NSDateFormatter alloc] init];
         [day setDateFormat: @"EEE"];
-        NSLog(@"DAY: %@", [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:0] doubleValue]]]);
-        self.day1Text.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:0] doubleValue]]];
-        self.day2Text.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:1] doubleValue]]];
-        self.day3Text.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:2] doubleValue]]];
-        self.day4Text.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:3] doubleValue]]];
-        self.day5Text.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:4] doubleValue]]];
         
+        int i = 0;
+        for (UILabel *label in self.dayLabelArray) {
+            label.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:i++] doubleValue]]];
+        }
+        
+        //TO DO: Refactor
         self.day1Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:0]];
         self.day2Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:1]];
         self.day3Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:2]];
         self.day4Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:3]];
         self.day5Temp.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:4]];
         
+        //TO DO: Refactor
         self.day1TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:0]];
         self.day2TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:1]];
         self.day3TempMin.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:2]];

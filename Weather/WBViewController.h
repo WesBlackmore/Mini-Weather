@@ -12,6 +12,9 @@
 
 @interface WBViewController : UIViewController
 
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *fontLabelArray;
+
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *dayLabelArray;
 
 @property (weak, nonatomic) IBOutlet UILabel *currentDateTime;
 

@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather/WBViewController.m"
-            timestampString = "425299726.899121"
+            timestampString = "428855392.939479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather/WBViewController.m"
-            timestampString = "425298149.250497"
+            timestampString = "428855392.939479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
             <Locations>
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather/WBViewController.m"
-            timestampString = "425299726.899121"
+            timestampString = "428855392.939479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -168,12 +168,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather/WBViewController.m"
-            timestampString = "425385808.062872"
+            timestampString = "428856586.386799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-returnWeatherDisctionaries"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-returnWeatherDictionaries"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -184,12 +184,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather/WBViewController.m"
-            timestampString = "425314273.42444"
+            timestampString = "428855392.939479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-returnWeatherDisctionaries"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-returnWeatherDictionaries"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -206,6 +206,22 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "-roundNumberUp:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weather/WBViewController.m"
+            timestampString = "428856682.583692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-returnWeatherDictionaries"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
