@@ -332,35 +332,35 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arS-2z-9Qh">
-                                        <rect key="frame" x="0.0" y="339" width="64" height="21"/>
+                                        <rect key="frame" x="1" y="333" width="64" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hour1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGJ-af-gUv">
-                                        <rect key="frame" x="64" y="339" width="70" height="21"/>
+                                        <rect key="frame" x="64" y="333" width="70" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hour2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMD-Pr-p3M">
-                                        <rect key="frame" x="131" y="339" width="63" height="21"/>
+                                        <rect key="frame" x="131" y="333" width="63" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hour3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdB-Uw-wlm">
-                                        <rect key="frame" x="188" y="339" width="73" height="21"/>
+                                        <rect key="frame" x="188" y="333" width="73" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hour4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkD-Vq-bS6">
-                                        <rect key="frame" x="259" y="339" width="61" height="21"/>
+                                        <rect key="frame" x="259" y="333" width="61" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -450,6 +450,21 @@
                         <outletCollection property="dayIconArray" destination="agr-kX-E5v" id="1CG-WC-h15"/>
                         <outletCollection property="dayIconArray" destination="YcZ-fx-RTX" id="yuz-Kt-NRx"/>
                         <outletCollection property="dayIconArray" destination="TTF-P9-gGU" id="j38-Ms-7uc"/>
+                        <outletCollection property="hourLabelArray" destination="arS-2z-9Qh" id="4dY-0b-2vc"/>
+                        <outletCollection property="hourLabelArray" destination="mGJ-af-gUv" id="Giu-1d-rBH"/>
+                        <outletCollection property="hourLabelArray" destination="WMD-Pr-p3M" id="ICP-mn-sbW"/>
+                        <outletCollection property="hourLabelArray" destination="pdB-Uw-wlm" id="TFr-6T-php"/>
+                        <outletCollection property="hourLabelArray" destination="gkD-Vq-bS6" id="8kK-YS-8ef"/>
+                        <outletCollection property="hourIconArray" destination="rtP-r6-N8b" id="5sc-uY-bh8"/>
+                        <outletCollection property="hourIconArray" destination="rhc-qo-5XL" id="6tS-5F-Bzo"/>
+                        <outletCollection property="hourIconArray" destination="UXO-PX-zMJ" id="Pfb-kX-HnF"/>
+                        <outletCollection property="hourIconArray" destination="65I-1V-DJg" id="Obh-i7-OWJ"/>
+                        <outletCollection property="hourIconArray" destination="aCl-69-wqN" id="Bzj-EL-7FH"/>
+                        <outletCollection property="hourTempArray" destination="haa-Mq-9qo" id="5B0-QD-WKD"/>
+                        <outletCollection property="hourTempArray" destination="6tq-7T-m9t" id="DN0-hV-G7u"/>
+                        <outletCollection property="hourTempArray" destination="FYk-qw-FiQ" id="xhv-JL-8cV"/>
+                        <outletCollection property="hourTempArray" destination="KtA-dv-TmR" id="hNg-Hv-CB7"/>
+                        <outletCollection property="hourTempArray" destination="nRS-0g-LFs" id="ipE-Ar-PT1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -100,6 +100,7 @@
 }
 
 -(void)returnWeatherDictionaries {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     ForecastKit *forecast = [[ForecastKit alloc] initWithAPIKey:@"4f3b47f06c6a8e18ea2a07fa0c290d6c"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f", @"4f3b47f06c6a8e18ea2a07fa0c290d6c", [self.latitude doubleValue], [self.longitude doubleValue]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -112,30 +113,47 @@
         NSLog(@"Hourly: %@", [[_dailyArray valueForKeyPath:@"data"] objectAtIndex:0]);
         
         //Update UI Hourly TODO
-        
-        //Update UI Daily
-        NSDateFormatter* day = [[NSDateFormatter alloc] init];
-        [day setDateFormat: @"EEE"];
+        [dateFormatter setDateFormat: @"ha"];
+        [dateFormatter setAMSymbol:@"am"];
+        [dateFormatter setPMSymbol:@"pm"];
         
         int i = 0;
-        for (UILabel *label in self.dayLabelArray) {
-            label.text = [day stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:i++] doubleValue]]];
+        for (UILabel *label in self.hourLabelArray) {
+            i++;
+            label.text = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_hourlyArray valueForKeyPath:@"data.time"] objectAtIndex:i++] doubleValue]]];
         }
         
         i = 0;
-        for (UILabel *label in self.dayIconArray) {
+        for (UILabel *label in self.hourIconArray) {
+            i++;
+            label.text =[forecast iconCharacter:[[_hourlyArray valueForKeyPath:@"data.icon"] objectAtIndex:i++]];
+        }
+        
+        i = 0;
+        for (UILabel *label in self.hourTempArray) {
+            i++;
+            label.text =[forecast celciusValue:[[_hourlyArray valueForKeyPath:@"data.temperature"] objectAtIndex:i++]];
+        }
+        
+        //Update UI Daily
+        
+        [dateFormatter setDateFormat: @"EEE"];
+        
+        i = 0;
+        for (UILabel *label in self.dayLabelArray)
+            label.text = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[[_dailyArray valueForKeyPath:@"data.time"] objectAtIndex:i++] doubleValue]]];
+       
+        i = 0;
+        for (UILabel *label in self.dayIconArray)
             label.text =[forecast iconCharacter:[[_dailyArray valueForKeyPath:@"data.icon"] objectAtIndex:i++]];
-        }
         
         i = 0;
-        for (UILabel *label in self.dayTempArray) {
+        for (UILabel *label in self.dayTempArray)
             label.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMax"] objectAtIndex:i++]];
-        }
         
         i = 0;
-        for (UILabel *label in self.dayTempMinArray) {
+        for (UILabel *label in self.dayTempMinArray)
             label.text =[forecast celciusValue:[[_dailyArray valueForKeyPath:@"data.temperatureMin"] objectAtIndex:i++]];
-        }
        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@",  operation.responseString);

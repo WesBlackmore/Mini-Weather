@@ -22,6 +22,12 @@
 
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *dayTempMinArray;
 
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *hourLabelArray;
+
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *hourIconArray;
+
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *hourTempArray;
+
 @property (weak, nonatomic) IBOutlet UILabel *currentDateTime;
 
 @property (weak, nonatomic) IBOutlet UILabel *tempLabel;
