@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4AD4F8AED3924E8AB08E4C97 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6116C5804945F3B69F9DFC /* libPods.a */; };
+		B64CC8C91990D78800D8DA39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64CC8C81990D78800D8DA39 /* MobileCoreServices.framework */; };
 		B670BAEC1952EAA3001BF805 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B670BAEB1952EAA3001BF805 /* CoreLocation.framework */; };
 		B6BCB98419472F1200C193E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BCB98319472F1200C193E9 /* Foundation.framework */; };
 		B6BCB98619472F1200C193E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BCB98519472F1200C193E9 /* CoreGraphics.framework */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		6C6116C5804945F3B69F9DFC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B64CC8C81990D78800D8DA39 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B670BAEB1952EAA3001BF805 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B6BCB98019472F1200C193E9 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BCB98319472F1200C193E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B64CC8C91990D78800D8DA39 /* MobileCoreServices.framework in Frameworks */,
 				B670BAEC1952EAA3001BF805 /* CoreLocation.framework in Frameworks */,
 				B6BCB9C219485C7C00C193E9 /* QuartzCore.framework in Frameworks */,
 				B6BCB98619472F1200C193E9 /* CoreGraphics.framework in Frameworks */,
@@ -141,6 +144,7 @@
 		B6BCB98219472F1200C193E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B64CC8C81990D78800D8DA39 /* MobileCoreServices.framework */,
 				B670BAEB1952EAA3001BF805 /* CoreLocation.framework */,
 				B6BCB9C119485C7C00C193E9 /* QuartzCore.framework */,
 				B6BCB98319472F1200C193E9 /* Foundation.framework */,

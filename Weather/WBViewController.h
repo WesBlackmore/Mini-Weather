@@ -12,6 +12,8 @@
 
 @interface WBViewController : UIViewController
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *fontLabelArray;
 
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *dayLabelArray;

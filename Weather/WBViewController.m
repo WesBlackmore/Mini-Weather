@@ -35,6 +35,8 @@
     self.viewMainView.alpha = 0.0f;
     
     [self loadLocation];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
  }
 
 - (void) viewDidAppear:(BOOL)animated {
